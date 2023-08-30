@@ -1,15 +1,10 @@
 ﻿using HotelProject.EntityLayer.Concrete;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace HotelProject.DataAccessLayer.Concrete
 {
-	public class Context : IdentityDbContext<AppUser,AppRole, int>
+    public class Context : IdentityDbContext<AppUser,AppRole, int>
 	{
 		protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 		{
@@ -25,5 +20,6 @@ namespace HotelProject.DataAccessLayer.Concrete
 		public DbSet<Guest> Guests { get; set; }
 		public DbSet<Contact> Contacts { get; set; }
 		public DbSet<SendMessage> SendMessages { get; set; }
+		public DbSet<MessageCategory> MessageCategories { get; set; }
     }
 }
