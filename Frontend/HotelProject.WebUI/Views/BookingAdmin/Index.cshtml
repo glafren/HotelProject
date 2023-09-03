@@ -34,7 +34,26 @@
                         <td>@item.Name</td>
                         <td>@(((DateTime)item.CheckIn).ToString("dd-MMM-yyyy"))</td>
                         <td>@(((DateTime)item.CheckOut).ToString("dd-MMM-yyyy"))</td>
-                        <td><span class="badge badge-primary px-2">@item.Status</span></td>
+                        <td>
+                            @switch (item.Status)
+                            {
+                                case "Onaylandı":
+                                    <span class="badge badge-success px-2">@item.Status</span>
+                                    break;
+                                case "Onay Bekliyor":
+                                    <span class="badge badge-primary px-2">@item.Status</span>
+                                    break;
+                                case "İptal Edildi":
+                                    <span class="badge badge-danger px-2">@item.Status</span>
+                                    break;
+                                case "Müşteri Aranacak":
+                                    <span class="badge badge-warning px-2">@item.Status</span>
+                                    break;
+                                default:
+                                    <span class="badge px-2">@item.Status</span>
+                                    break;
+                            }
+                        </td>
                         <td><a href="/BookingAdmin/BookingApproved/@item.BookingID" class="btn btn-primary">Onayla</a></td>
                         <td><a href="/BookingAdmin/BookingCancel/@item.BookingID" class="btn btn-danger">İptal Et</a></td>
                         <td><a href="/BookingAdmin/BookingWait/@item.BookingID" class="btn btn-warning">Beklet</a></td>
